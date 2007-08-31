@@ -6,21 +6,24 @@ package MT::Plugin::KeywordsAsTags;
 use strict;
 use MT;
 use base qw(MT::Plugin);
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my $plugin = __PACKAGE__->new({
-    name => 'KeywordsAsTags Plugin',
-    description => 'A plugin for converting keywords to MT3.3 tags when posting an entry with keywords.',
+    id => 'keywords_as_tags',
+    name => 'KeywordsAsTags',
+    description => q(<MT_TRANS phrase="KeywordsAsTags allows you to convert 'entry keywords' to MT3.3+ tags when posting an entry with keywords. It is convenient for you to post tagged entries from a blog client application which does not support 'tag' feature.">),
     doc_link => 'http://code.as-is.net/wiki/KeywordsAsTags_Plugin',
     author_name => 'Hirotaka Ogawa',
     author_link => 'http://profile.typekey.com/ogawa/',
     version => $VERSION,
+    l10n_class => 'KeywordsAsTags::L10N',
 });
 MT->add_plugin($plugin);
 MT->add_callback('MT::Entry::post_save', 5, $plugin, \&keywords_as_tags);
 
 sub keywords_as_tags {
-    my ($eh, $app, $e) = @_;
+    my $class = shift;
+    my ($e) = @_;
     return unless $e->isa('MT::Entry') && $e->keywords;
     my @tags = split_tags($e->keywords, 1);
     return unless scalar @tags;
