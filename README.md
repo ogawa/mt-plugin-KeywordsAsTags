@@ -1,4 +1,4 @@
-KeywordsAsTags プラグイン
+# KeywordsAsTags プラグイン
 
 投稿時にエントリーキーワードを「タグ」として登録するプラグイン。
 
@@ -43,7 +43,7 @@ KeywordsAsTagsプラグインは、これらのブログ管理ツールからも
 
 ## License
 
-This code is released under the Artistic License. The terms of the Artistic License are described at [http://www.perl.com/language/misc/Artistic.html]().
+This code is released under the Artistic License. The terms of the Artistic License are described at [http://www.perl.com/language/misc/Artistic.html](http://www.perl.com/language/misc/Artistic.html).
 
 ## Author & Copyright
 
